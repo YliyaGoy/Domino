@@ -1,15 +1,17 @@
 package service;
+import view.StartGameView;
 
 import java.util.Scanner;
 
 public class CheckService {
+    StartGameView startGameView = new StartGameView();
+
     public int intInput() throws NumberFormatException {
         Scanner scn = new Scanner(System.in);
         String number;
 
         while (!isInt(number = scn.nextLine())) {
-
-            System.out.print("Введите количество игроков: ");
+            startGameView.getMessage();
         }
         return Integer.parseInt(number);
     }
@@ -22,4 +24,5 @@ public class CheckService {
             return false;
         }
     }
+
 }

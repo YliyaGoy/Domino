@@ -1,10 +1,14 @@
 package service;
 
-import java.util.LinkedList;
 import model.Domino;
-import model.Player;
 
+import java.util.*;
+
+/**
+ * Created by gorbunova_ju_p on 13.10.2020.
+ */
 public class DominoService {
+
     public String drawDomino(Domino domino) {
         return "[" + domino.getLeftNumber()+ " " + domino.getRightNumber() + "] ";
     }

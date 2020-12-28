@@ -1,10 +1,13 @@
 package service;
 import model.Deck;
+import model.Deck;
 import model.Domino;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class DistributorService {
+
     public LinkedList<Domino> distribute(Deck deck) { //обычная раздача
         int randomIndex;
         LinkedList<Domino> dom = new LinkedList<>();
@@ -21,3 +24,4 @@ public class DistributorService {
         return (int)(Math.random() * ++max) + min;
     }
 }
+

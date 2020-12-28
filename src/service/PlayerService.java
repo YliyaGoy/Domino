@@ -7,14 +7,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PlayerService {
-    public void getPlayerDominoToString(Player pl) {
-        for (Domino playerDomino : pl.getPlayerDomino()) {
-            System.out.print(new DominoService().drawDomino(playerDomino));
-        }
-    }
+    DominoService dominoService =  new DominoService();
+    DominoService diceService = new DominoService();
 
     public Domino maxDomino(List<Domino> playerDomino) {
-        DominoService diceService = new DominoService();
         Domino model = null;
         int numbersSum = 0;
         int maxNumbersSum = 0;
@@ -39,7 +35,7 @@ public class PlayerService {
 
     public Domino allovedDomino(LinkedList<Integer> allowedNumbers, LinkedList<Domino> playerDominoes) {
         for (Domino domino : playerDominoes) {
-            if (new DominoService().isAllowed(allowedNumbers, domino)) {
+            if (dominoService.isAllowed(allowedNumbers, domino)) {
                 return domino;
             }
         }

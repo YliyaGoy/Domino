@@ -8,6 +8,9 @@ import service.DistributorService;
 import java.util.LinkedList;
 
 public class StartGameView {
+    DistributorService distributorService = new DistributorService();
+
+    PlayerView playerView = new PlayerView();
 
     private LinkedList<Player> players(Deck deck, int amountPlayers) {
         LinkedList<Player> players;
@@ -22,22 +25,24 @@ public class StartGameView {
     private int countPlayers() {
         CheckService cs = new CheckService();
         int amountPlayers = 0; //кол-во игроков
-        System.out.print("Введите количество игроков: ");
-        while ((amountPlayers > 5) || (amountPlayers <= 1)) {
+        getMessage();
+        while ((amountPlayers > 4) || (amountPlayers <= 1)) {
             amountPlayers = cs.intInput();
         }
         return amountPlayers;
+    }
+    public void getMessage(){
+        System.out.print("Введите количество игроков: ");
     }
 
     private LinkedList<Player> create(Deck pm, int amountPlayers) {
         LinkedList<Player> playerServices = new LinkedList<>();
         for (int i = 0; i < amountPlayers; i++) {
             Player player = new Player();
-            player.setPlayerDomino(new DistributorService().distribute(pm));
+            player.setPlayerDomino(distributorService.distribute(pm));
             playerServices.add(player);
         }
-        new PlayerView().printAllPlayersDominoes(playerServices);
+        playerView.printAllPlayersDominoes(playerServices);
         return playerServices;
     }
 }
-
